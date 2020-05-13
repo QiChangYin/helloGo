@@ -3,9 +3,10 @@ package main
 import (
 	"github.com/astaxie/beego"
 	_ "github.com/lib/pq"
-	"hello/controllers"
-	"hello/models"
-	_ "hello/routers"
+	_ "github.com/go-sql-driver/mysql"
+	"helloGo/controllers"
+	"helloGo/models"
+	_ "helloGo/routers"
 	"reflect"
 )
 

@@ -7,7 +7,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 	"github.com/astaxie/beego/orm"
-	"hello/models"
+	"helloGo/models"
 	"regexp"
 	"strconv"
 )
@@ -39,10 +39,14 @@ func (c *LoginController) Register() {
 
 // @router /register/do [post]
 func (c *LoginController) DoRegister() {
+	logs.Info("==============")
 	var user models.User
 	var result models.Result
 	err := json.Unmarshal(c.Ctx.Input.RequestBody, &user)
+	logs.Info(err)
+	logs.Info(c.Ctx.Input.RequestBody)
 	checkError(err)
+
 
 	userName := user.UserName
 	password := user.Password
@@ -66,7 +70,8 @@ func (c *LoginController) DoRegister() {
 	}
 	// 对密码加密
 	user.Password = passwordEncode(password)
-
+	logs.Info("==============")
+	logs.Info(user.Password)
 	id, e := orm.NewOrm().Insert(&user)
 	if e != nil {
 		result.Code = 404

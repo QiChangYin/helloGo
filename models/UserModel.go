@@ -17,6 +17,7 @@ type User struct {
 }
 
 type Result struct {
+	Id       int    `form:"-" json:"id"`
 	Message string `json:"message"`
 	Success bool   `json:"success"`
 	Code    int    `json:"code"`
