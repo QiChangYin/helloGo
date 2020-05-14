@@ -21,13 +21,14 @@ func (u *UserController) URLMapping() {
 	u.Mapping("SaveUser",u.SaveUser)
 	u.Mapping("UserJSON",u.UserJSON)
 }
+
 // @router /user [get]
 func (c *UserController) Register() {
 	logs.Info(">>>> forward to register page start <<<<")
 
-
 	c.TplName = "user/form.html"
 }
+
 
 // @router /user/get/:id [get]
 func (u *UserController) QueryById() {
@@ -40,11 +41,13 @@ func (u *UserController) QueryById() {
 	checkError(err)
 
 	u.Data["User"] = user
-	bytes,err := json.Marshal(user)
+	bytes, err := json.Marshal(user)
+
 	u.Ctx.ResponseWriter.Write(bytes)
 
 	//u.TplName = "user/user.html"
 }
+
 // @router /user/list [get]
 func (u *UserController) QueryList() {
 	logs.Info(">>>> query user list start <<<<")
@@ -93,6 +96,7 @@ func (u *UserController) UserJSON() {
 	logs.Info(">>>> save user json information start <<<<")
 	// requestBody数据
 	var user models.User
+	logs.Info(u.Ctx.Input.RequestBody)
 	err := json.Unmarshal(u.Ctx.Input.RequestBody,&user)
 	checkError(err)
 

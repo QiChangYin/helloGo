@@ -109,7 +109,7 @@ func init() {
     beego.GlobalControllerRouter["helloGo/controllers:UserController"] = append(beego.GlobalControllerRouter["helloGo/controllers:UserController"],
         beego.ControllerComments{
             Method: "QueryById",
-            Router: `/user/get/:id`,
+            Router: `/user/cao/:id`,
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
