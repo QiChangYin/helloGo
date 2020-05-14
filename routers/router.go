@@ -7,8 +7,8 @@ import (
 
 func init() {
 	/*固定路由*/
-    //beego.Router("/", &controllers.MainController{})
-    //beego.Router("/user",&controllers.UserController{})
+    beego.Router("/", &controllers.MainController{})
+    beego.Router("/user",&controllers.UserController{})
 
     beego.BConfig.EnableGzip = true
     beego.BConfig.RouterCaseSensitive = true

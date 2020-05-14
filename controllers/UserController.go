@@ -31,7 +31,9 @@ func (c *UserController) Register() {
 
 // @router /user/get/:id [get]
 func (u *UserController) QueryById() {
+	logs.Info(">>>> query user by userId s111tart <<<<")
 	strId := u.Ctx.Input.Param(":id")
+	logs.Info(strId)
 	logs.Info(">>>> query user by userId start <<<<")
 	id,err := strconv.Atoi(strId)
 	user := models.QueryUserById(id)
