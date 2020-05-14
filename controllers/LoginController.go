@@ -39,14 +39,14 @@ func (c *LoginController) Register() {
 
 // @router /register/do [post]
 func (c *LoginController) DoRegister() {
-	logs.Info("==============")
+	logs.Info("========DoRegisterDoRegisterDoRegisterDoRegisterDoRegisterDoRegisterDoRegisterDoRegisterDoRegister======")
 	var user models.User
 	var result models.Result
+	//Json Unmarshal：将json字符串解码到相应的数据结构
 	err := json.Unmarshal(c.Ctx.Input.RequestBody, &user)
 	logs.Info(err)
 	logs.Info(c.Ctx.Input.RequestBody)
 	checkError(err)
-
 
 	userName := user.UserName
 	password := user.Password
@@ -70,7 +70,7 @@ func (c *LoginController) DoRegister() {
 	}
 	// 对密码加密
 	user.Password = passwordEncode(password)
-	logs.Info("==============")
+	logs.Info("=========================================================================================")
 	logs.Info(user.Password)
 	id, e := orm.NewOrm().Insert(&user)
 	if e != nil {
@@ -84,7 +84,7 @@ func (c *LoginController) DoRegister() {
 		result.Success = true
 		result.Message = "注册成功"
 	}
-
+	logs.Info("=========================================================================================")
 	bytes, err := json.Marshal(&result)
 	c.Ctx.ResponseWriter.Write(bytes)
 }
