@@ -6,6 +6,7 @@ import (
 )
 
 func init() {
+
 	/*固定路由*/
 	// 固定路由的方式比较直接
     beego.Router("/", &controllers.MainController{})
@@ -33,7 +34,9 @@ func init() {
 
 	/*同时注册多个路由*/
 	//同时注册多个路由的性质
-	beego.Include(&controllers.UserController{},&controllers.CommonController{},&controllers.FileController{})
+	beego.Include(&controllers.UserController{},
+	              &controllers.CommonController{},
+	              &controllers.FileController{})
 	//beego.ErrorController(&controllers.ErrorController{})
 }
 

@@ -60,9 +60,10 @@ func main() {
 }
 
 func init() {
+
 	// 数据库初始化
 	models.Init()
-
 	// 初始化session配置
 	models.InitSession()
+
 }
