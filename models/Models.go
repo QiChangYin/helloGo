@@ -33,7 +33,9 @@ func Init() {
 	//orm.RegisterDriver("mysql", orm.DRMySQL)
 	orm.RegisterDataBase("default", "mysql", "root:123456@tcp(localhost:3306)/helloGo?charset=utf8")
 	//o := orm.NewOrm()
-	orm.RegisterModel(new(User),new(Result))
+	orm.RegisterModel(new(User),new(Result),new(Cao))
+	// create table
+	orm.RunSyncdb("default", true, true)
 	//configInfo := beego.AppConfig.String("MYSQL::helloGo")
 	//o.Using(configInfo)
 	//orm.RunSyncdb("default", true, true

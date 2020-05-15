@@ -30,7 +30,7 @@ func (c *UserController) Register() {
 }
 
 
-// @router /user/get/:id [get]
+// @router /user/rinige/:id [get]
 func (u *UserController) QueryById() {
 	logs.Info(">>>> query user by userId s111tart <<<<")
 	strId := u.Ctx.Input.Param(":id")

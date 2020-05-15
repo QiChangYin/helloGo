@@ -22,6 +22,12 @@ type Result struct {
 	Success bool   `json:"success"`
 	Code    int    `json:"code"`
 }
+type Cao struct {
+	Id       int    `form:"-" json:"id"`
+	Message string `json:"message"`
+	Success bool   `json:"success"`
+	Code    int    `json:"code"`
+}
 
 func QueryUserById(id int) *User {
 	var user User
