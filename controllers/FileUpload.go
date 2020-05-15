@@ -104,9 +104,23 @@ type Result struct {
 	Rs *User	`json:"rs"`
 }
 
+type ResultNew struct {
+	Code string `json: "code"`
+	Msg  string `json: "msg"`
+	Rs   *User  `json: "rs"`
+}
+
 type User struct {
 	UserName string `json:"userName"`
 	Age int			`json:"age"`	
 	Mobile string	`json:"mobile"`
 	Address string	`json:"address"`
+}
+
+type UserNew struct {
+	UserName string  `json:"userName"`
+	Age      int     `json: "age"`
+	Mobile   string  `json:"mobile"`
+	Address  string  `json:"address"`
+
 }

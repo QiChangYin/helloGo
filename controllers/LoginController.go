@@ -144,6 +144,12 @@ func passwordEncode(password string) string {
 	return hex.EncodeToString(h.Sum(nil))
 }
 
+func passwordEncodeNew(password string) string {
+	h := md5.New()
+	h.Write([]byte(password))
+	return hex.EncodeToString(h.Sum(nil))
+}
+
 // @router /login/do  [post]
 func (c *LoginController) DoLogin() {
 	logs.Info(">>>> user do login start <<<<")
