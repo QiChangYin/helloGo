@@ -16,8 +16,14 @@ type FileController struct {
 	beego.Controller
 }
 
+type FileControllerNew struct {
+	beego.Controller
+}
 // struct接收文件
 type Images struct {
+	File string
+}
+type ImagesNew struct {
 	File string
 }
 

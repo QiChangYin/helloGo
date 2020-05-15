@@ -149,12 +149,31 @@ func (c *LoginController) DoLogin() {
 	logs.Info(">>>> user do login start <<<<")
 	var user models.User
 	// 表单映射成struct
+	// 实例化一个数据结构，用于生成json字符串
+	// jsonStu是[]byte类型，转化成string类型便于查看
+	// jsonStu是[]byte类型，转化成string类型便于查看
+	// fmt.Println(string(jsonStu))
+	// jsonStu是[]byte类型，转化为string类型便于查看
+	// interface{}类型其实是一个空接口，即没有方法接口。go的每一种类型都实现了该接口。因此，任何其它类型的数据都可以复制给
+	// interface{}类型
+	// 无论是string、int、bool，还是指针类型，都可以赋值给interface{}类型，且正常编码，效果和前面的例子一样的。
+	// 在实际项目中，编码成json串的数据结构，往往是切片类型。如下定义了一个[]StuRead类型的切片
+	// 方式一
+	// var stus1 []*StuRead
+	// 只申明，不分配内存
+	// 方式二
+	// 分配初始值为0的内存
+	// stus2 := make([]&StuRead，0)
+	// stu1  := StuRead{成员赋值...}
+	// stu2  := StuRead{成员赋值...}
+	// 由方式1和2创建切片，都能成功追加数据
+	// 方式2最好分配0长度，append是会自动增长。导致数据丢失
+	// json1, _ := json.Marshal(stus1)
+	// json2, _ := json.Marshal(stus2)
+	// 解码时定义对应的切片接收即可。
 	err := json.Unmarshal(c.Ctx.Input.RequestBody, &user)
-
 	user.Password = passwordEncode(user.Password)
-
 	right := models.QueryByNamePwd(user.UserName, user.Password)
-
 	var r models.Result
 	if right {
 		r.Code = 200
@@ -165,9 +184,7 @@ func (c *LoginController) DoLogin() {
 		r.Success = false
 		r.Message = "用户或密码错误"
 	}
-	//c.ServeJSON()
-	//c.Data["json"] = &r
-	// 或者使用这种方式
+
 	var bytes []byte
 	bytes, err = json.Marshal(&r)
 	if err != nil {
@@ -175,3 +192,20 @@ func (c *LoginController) DoLogin() {
 	}
 	c.Ctx.ResponseWriter.Write(bytes)
 }
+
+// nameType:=reflect.TypeOf(stu.Name)
+// nameType := reflect.TypeOf(stu.Name)
+// ageType  := reflect.TypeOf(stu.Age)
+// highType := reflect.TypeOf(stu.sex)
+// sexType  := reflect.TypeOf(stu.)
+// ageType:=reflect.TypeOf(stu.Age)
+// highType:=reflect.TypeOf(stu.HIgh)
+// sexType:=reflect.TypeOf(stu.sex)
+// classType:=reflect.TypeOf(stu.Class)
+// testType:=reflect.TypeOf(stu.Test)
+// fmt.Println("nameType:",nameType)
+// fmt.Println("ageType:",ageType)
+// fmt.Println("highType:",highType)
+// fmt.Println("sexType:",sexType)
+// fmt.Println("classType:",classType)
+// fmt.Println("testType:",testType)

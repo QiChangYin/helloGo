@@ -108,6 +108,7 @@ func (u *UserController) UserJSON() {
 	u.Ctx.Redirect(302,"/success")
 }
 
+
 func checkError(e error) {
 	if e != nil {
 		log.Fatal(e)
