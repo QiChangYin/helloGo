@@ -37,8 +37,8 @@ func (u *UserController) QueryById() {
 	logs.Info(strId)
 	logs.Info(">>>> query user by userId start <<<<")
 	id,err := strconv.Atoi(strId)
-	user := models.QueryUserDetaiInfo(id)
-	//user := models.QueryUserById(id)
+	//user := models.QueryUserDetaiInfo(id)
+	user := models.QueryUserById(id)
 	checkError(err)
 
 	u.Data["User"] = user
