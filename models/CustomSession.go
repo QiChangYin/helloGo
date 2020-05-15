@@ -1,9 +1,13 @@
 package models
 
-import "github.com/astaxie/beego/session"
+import (
+	"github.com/astaxie/beego/session"
+)
 
 // 定义
 var customSession *session.Manager
+
+
 
 func InitSession() {
 	// session数据初始化

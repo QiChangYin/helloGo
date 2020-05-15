@@ -42,17 +42,6 @@ type Baby struct {
 	Name string `json:"name" orm:"size(50)"`
 	User *User `json:"user" orm:"rel(fk);index"`
 }
-func QueryUserDetaiInfo(user *User) *User {
-	//var user User
-	//o:= orm.NewOrm()
-	//o.QueryTable("user").Filter("id" ,id).One(&user, "username", "age", "sex", "mobile")
-	//o.LoadRelated(user,"Baby")
-	//logs.Info(">>>> query user by user id from database <<<<")
-	//return &user
-	o:= orm.NewOrm()
-	o.QueryTable("user").Filter("id" ,user.Id).One(user)
-	o.LoadRelated(user,"Baby")
-}
 
 func QueryUserById(id int) *User {
 	var user User
@@ -66,7 +55,6 @@ func QueryUserList() []*User {
 	var list []*User
 	orm := orm.NewOrm()
 	orm.QueryTable("user").All(&list, "username", "age", "sex", "mobile")
-
 	return list
 }
 
@@ -77,6 +65,15 @@ func InsertUser(u *User) int64 {
 		log.Fatal(err)
 	}
 
+	return id
+}
+
+func InsertUserNew(u *User) int64 {
+	o := orm.NewOrm()
+	id, err := o.Insert(u)
+	if err != nil {
+		log.Fatal(err)
+	}
 	return id
 }
 
