@@ -12,6 +12,7 @@ func BeforeExecFilter(ctx *context.Context) {
 
 func BeforeRouterFilter(ctx *context.Context) {
 	logs.Info(">>>> BeforeRouter filter start <<<<")
+	logs.Info("Info:")
 
 }
 

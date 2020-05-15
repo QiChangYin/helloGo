@@ -7,6 +7,7 @@ import (
 
 func init() {
 	/*固定路由*/
+	// 固定路由的方式比较直接
     beego.Router("/", &controllers.MainController{})
     beego.Router("/user",&controllers.UserController{})
 
@@ -24,15 +25,18 @@ func init() {
 	//beego.BConfig.WebConfig.ViewsPath="views/user"
 
 	/*注解路由*/
+	//注解路由比较方便
 	beego.Include(&controllers.UserController{})
 	beego.Include(&controllers.CommonController{})
 	beego.Include(&controllers.FileController{})
 	beego.Include(&controllers.LoginController{})
 
 	/*同时注册多个路由*/
+	//同时注册多个路由的性质
 	beego.Include(&controllers.UserController{},&controllers.CommonController{},&controllers.FileController{})
 	//beego.ErrorController(&controllers.ErrorController{})
 }
+
 //AppName
 //应用名称，默认是 beego。通过bee new创建的是创建的项目名。
 //beego.BConfig.AppName = "beego"

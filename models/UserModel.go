@@ -82,7 +82,6 @@ func QueryByNamePwd(username, password string) bool {
 	var user User
 	orm := orm.NewOrm()
 	err := orm.QueryTable("user").Filter("username", username).Filter("password", password).One(&user, "username", "age", "sex", "mobile", "email")
-
 	var result bool
 	if err != nil {
 		logs.Error(err)
