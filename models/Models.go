@@ -14,6 +14,7 @@ func Init() {
 	//// 注册数据库
 	//username := beego.AppConfig.String("username")
 	//password := beego.AppConfig.String("password")
+	//logs.Info(username,password)
 	//url := beego.AppConfig.String("url")
 	//dbname := beego.AppConfig.String("dbname")
 	//datasource := "mysql://" + username + ":" + password + "@" + url + "/" + dbname
