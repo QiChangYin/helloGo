@@ -108,8 +108,8 @@ func init() {
 
     beego.GlobalControllerRouter["helloGo/controllers:UserController"] = append(beego.GlobalControllerRouter["helloGo/controllers:UserController"],
         beego.ControllerComments{
-            Method: "QueryList",
-            Router: `/user/list`,
+            Method: "QueryById",
+            Router: `/user/get/:id`,
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
@@ -117,8 +117,8 @@ func init() {
 
     beego.GlobalControllerRouter["helloGo/controllers:UserController"] = append(beego.GlobalControllerRouter["helloGo/controllers:UserController"],
         beego.ControllerComments{
-            Method: "QueryById",
-            Router: `/user/rinige/:id`,
+            Method: "QueryList",
+            Router: `/user/list`,
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,

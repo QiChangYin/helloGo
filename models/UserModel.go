@@ -42,6 +42,17 @@ type Baby struct {
 	Name string `json:"name" orm:"size(50)"`
 	User *User `json:"user" orm:"rel(fk);index"`
 }
+func QueryUserDetaiInfo(user *User) *User {
+	//var user User
+	//o:= orm.NewOrm()
+	//o.QueryTable("user").Filter("id" ,id).One(&user, "username", "age", "sex", "mobile")
+	//o.LoadRelated(user,"Baby")
+	//logs.Info(">>>> query user by user id from database <<<<")
+	//return &user
+	o:= orm.NewOrm()
+	o.QueryTable("user").Filter("id" ,user.Id).One(user)
+	o.LoadRelated(user,"Baby")
+}
 
 func QueryUserById(id int) *User {
 	var user User
@@ -68,11 +79,6 @@ func InsertUser(u *User) int64 {
 
 	return id
 }
-//func getUserDetaiInfo() *User {
-//	o:= orm.NewOrm()
-//	o.QueryTable("tb_user").Filter("id" ,user.Id).One(user)
-//	o.LoadRelated(user,"Baby")
-//}
 
 func QueryByNamePwd(username, password string) bool {
 	logs.Info(">>>> query user by user name and password from database <<<<")

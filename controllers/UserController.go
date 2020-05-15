@@ -30,14 +30,15 @@ func (c *UserController) Register() {
 }
 
 
-// @router /user/rinige/:id [get]
+// @router /user/get/:id [get]
 func (u *UserController) QueryById() {
 	logs.Info(">>>> query user by userId s111tart <<<<")
 	strId := u.Ctx.Input.Param(":id")
 	logs.Info(strId)
 	logs.Info(">>>> query user by userId start <<<<")
 	id,err := strconv.Atoi(strId)
-	user := models.QueryUserById(id)
+	user := models.QueryUserDetaiInfo(id)
+	//user := models.QueryUserById(id)
 	checkError(err)
 
 	u.Data["User"] = user
