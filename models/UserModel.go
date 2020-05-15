@@ -29,6 +29,20 @@ type Cao struct {
 	Code    int    `json:"code"`
 }
 
+type Article struct {
+	Id int
+	Title string
+	Content string
+	User *User `orm:"rel(fk)"`
+	//这样写，默认在Article中应该有一个user_id的字段，如果没有，
+	//通过beego自动建表的话，它会生成；如果是手动建表，记得把user_id 这个字段加上去
+}
+type Baby struct {
+	Id int64
+	Name string `json:"name" orm:"size(50)"`
+	User *User `json:"user" orm:"rel(fk);index"`
+}
+
 func QueryUserById(id int) *User {
 	var user User
 	orm := orm.NewOrm()
@@ -54,6 +68,11 @@ func InsertUser(u *User) int64 {
 
 	return id
 }
+//func getUserDetaiInfo() *User {
+//	o:= orm.NewOrm()
+//	o.QueryTable("tb_user").Filter("id" ,user.Id).One(user)
+//	o.LoadRelated(user,"Baby")
+//}
 
 func QueryByNamePwd(username, password string) bool {
 	logs.Info(">>>> query user by user name and password from database <<<<")

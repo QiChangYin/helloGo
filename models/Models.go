@@ -29,12 +29,10 @@ func Init() {
 	//
 	//orm.RegisterDataBase("default", "mysql", "root:root@tcp(123.123.123.123:3306)/test?charset=utf8")
 	//————————————————
-	//版权声明：本文为CSDN博主「loongshawn」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-	//原文链接：https://blog.csdn.net/loongshawn/article/details/54973203
 	//orm.RegisterDriver("mysql", orm.DRMySQL)
 	orm.RegisterDataBase("default", "mysql", "root:123456@tcp(localhost:3306)/helloGo?charset=utf8")
 	//o := orm.NewOrm()
-	orm.RegisterModel(new(User),new(Result),new(Cao))
+	orm.RegisterModel(new(User),new(Result),new(Cao),new(Article),new(Baby))
 	// create table
 	orm.RunSyncdb("default", true, true)
 	//configInfo := beego.AppConfig.String("MYSQL::helloGo")
